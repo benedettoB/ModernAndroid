@@ -40,4 +40,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
-
+hiltPlug = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+#
+#ksp-plug = {id = "com.google.devtools.ksp", version = "2.0.10-1.0.24"}
