@@ -6,6 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -19,8 +22,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.benedetto.domain.Transaction
+import com.benedetto.geniusbankinterview.presentation.TransactionViewModel
 import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
 import com.benedetto.geniusbankinterview.ui.theme.Typography
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,12 +54,41 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CounterScreen()
+                        TransactionScreen()
                 }
             }
         }
     }
 }
+
+/*
+    LazyColumn for List
+    Compose-friendly ViewModel injection
+*/
+@Composable
+fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
+    val transactions by viewModel.transactions.collectAsState()
+
+    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+        LazyColumn {
+            items(transactions) { transaction ->
+                TransactionItem(transaction)
+            }
+        }
+    }
+}
+
+@Composable
+fun TransactionItem(transaction: Transaction) {
+    OutlinedCard(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(text = "ID: ${transaction.id}")
+            Text(text = "Amount: ${transaction.amount}")
+            Text(text = "Description: ${transaction.description}")
+        }
+    }
+}
+
 
 @Composable
 fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
