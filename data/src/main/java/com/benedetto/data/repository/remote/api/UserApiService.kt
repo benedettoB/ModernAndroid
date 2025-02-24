@@ -4,6 +4,6 @@ import com.benedetto.data.repository.remote.model.UserResponse
 import retrofit2.http.GET
 
 interface UserApiService {
-    @GET("users")
+    @GET("10")
     suspend fun getUsers(): List<UserResponse>
 }

@@ -3,10 +3,12 @@ package com.benedetto.data.repository.remote.model
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
+    @SerializedName("userId")
+    val userId: Int,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("email")
-    val email: String
+    @SerializedName("title")
+    val title: String,
+    @SerializedName("completed")
+    val completed: Boolean
 )

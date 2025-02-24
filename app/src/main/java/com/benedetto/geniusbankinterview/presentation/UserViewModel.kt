@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.benedetto.domain.model.User
 import com.benedetto.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.buffer
@@ -20,14 +21,22 @@ class UserViewModel @Inject constructor(private val getUserUseCase: GetUserUseCa
     private val _usersList: MutableStateFlow<List<User>> = MutableStateFlow(emptyList())
     val usersList: StateFlow<List<User>> = _usersList
 
+    init {
+        fetchUsers()
+    }
+
     private fun fetchUsers() {
         viewModelScope.launch {
-            getUserUseCase().catch { e ->
-                e.localizedMessage?.let { Log.d("UserViewModel", it) }
-
-            }.buffer().collect { users ->
-                _usersList.value = users
-            }
+            getUserUseCase()
+                .catch { e ->
+                    e.localizedMessage?.let {
+                        Log.d("UserViewModel", it)
+                    }
+                }
+                .buffer()
+                .collect { users ->
+                    _usersList.value = users
+                }
         }
     }
 }

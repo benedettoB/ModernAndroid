@@ -26,8 +26,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.benedetto.domain.model.Transaction
+import com.benedetto.domain.model.User
 import com.benedetto.geniusbankinterview.presentation.CounterViewModel
 import com.benedetto.geniusbankinterview.presentation.TransactionViewModel
+import com.benedetto.geniusbankinterview.presentation.UserViewModel
 import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
 import com.benedetto.geniusbankinterview.ui.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +46,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //CounterScreen()
-                    TransactionScreen()
+                    //TransactionScreen()
+                    UserScreen()
 
                 }
             }
@@ -56,6 +59,34 @@ class MainActivity : ComponentActivity() {
     LazyColumn for List
     Compose-friendly ViewModel injection
 */
+
+@Composable
+fun UserScreen(viewModel: UserViewModel = hiltViewModel()) {
+    val users by viewModel.usersList.collectAsState()
+
+    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+        LazyColumn {
+            items(users) { user ->
+                UserItem(user)
+            }
+        }
+    }
+}
+
+@Composable
+fun UserItem(user: User) {
+    OutlinedCard(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(text = "USER ID: ${user.userId}")
+            Text(text = "ID: ${user.id}")
+            Text(text = "TITLE: ${user.title}")
+            Text(text = "COMPLETED: ${user.completed}")
+
+        }
+    }
+}
+
+
 @Composable
 fun TransactionScreen(viewModel: TransactionViewModel = hiltViewModel()) {
     val transactions by viewModel.transactions.collectAsState()

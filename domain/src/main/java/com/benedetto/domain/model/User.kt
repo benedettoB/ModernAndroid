@@ -1,7 +1,8 @@
 package com.benedetto.domain.model
 
 data class User(
+    val userId: Int,
     val id: Int,
-    val name: String,
-    val email: String
+    val title: String,
+    val completed: Boolean
 )

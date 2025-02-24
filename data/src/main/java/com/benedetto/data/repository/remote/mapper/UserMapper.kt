@@ -5,8 +5,9 @@ import com.benedetto.domain.model.User
 
 fun UserResponse.toDomain(): User {
     return User(
+        userId = this.userId,
         id = this.id,
-        name = this.name,
-        email = this.email
+        title = this.title,
+        completed = this.completed
     )
 }
