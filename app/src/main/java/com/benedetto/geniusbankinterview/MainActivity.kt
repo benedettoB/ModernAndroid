@@ -23,27 +23,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.benedetto.domain.Transaction
+import com.benedetto.domain.model.Transaction
+import com.benedetto.geniusbankinterview.presentation.CounterViewModel
 import com.benedetto.geniusbankinterview.presentation.TransactionViewModel
 import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
 import com.benedetto.geniusbankinterview.ui.theme.Typography
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import dagger.hilt.android.AndroidEntryPoint
 
-
-// ViewModel using StateFlow
-class CounterViewModel : ViewModel() {
-    private val _count = MutableStateFlow(0)
-    val count = _count.asStateFlow()
-
-    fun increment() {
-        _count.value += 1
-    }
-}
-
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +43,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                        TransactionScreen()
+                    //CounterScreen()
+                    TransactionScreen()
+
                 }
             }
         }
@@ -66,7 +57,7 @@ class MainActivity : ComponentActivity() {
     Compose-friendly ViewModel injection
 */
 @Composable
-fun TransactionScreen(viewModel: TransactionViewModel = viewModel()) {
+fun TransactionScreen(viewModel: TransactionViewModel = hiltViewModel()) {
     val transactions by viewModel.transactions.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {

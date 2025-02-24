@@ -2,8 +2,8 @@ package com.benedetto.geniusbankinterview.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.benedetto.domain.GetTransactionsUseCase
-import com.benedetto.domain.Transaction
+import com.benedetto.domain.model.Transaction
+import com.benedetto.domain.usecase.GetTransactionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,8 +17,7 @@ import javax.inject.Inject
     @Inject constructor() makes Hilt automatically inject dependencies.
 */
 @HiltViewModel
-class TransactionViewModel @Inject constructor(private val getTransactionsUseCase: GetTransactionsUseCase) :
-    ViewModel() {
+class TransactionViewModel @Inject constructor(private val getTransactionsUseCase: GetTransactionsUseCase) : ViewModel() {
     private val _transactions = MutableStateFlow<List<Transaction>>(emptyList())
     val transactions: StateFlow<List<Transaction>> = _transactions
 

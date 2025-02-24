@@ -52,11 +52,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(libs.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
     implementation(libs.daggerHilt)
+    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.kaptHiltCompiler)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

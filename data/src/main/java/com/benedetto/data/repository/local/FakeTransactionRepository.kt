@@ -1,7 +1,8 @@
-package com.benedetto.data
+package com.benedetto.data.repository.local
 
-import com.benedetto.domain.Transaction
-import com.benedetto.domain.TransactionRepository
+
+import com.benedetto.domain.model.Transaction
+import com.benedetto.domain.repository.TransactionRepository
 import kotlinx.coroutines.delay
 
 /*Key Takeaways:

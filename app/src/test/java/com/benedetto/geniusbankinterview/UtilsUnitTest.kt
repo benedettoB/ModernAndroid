@@ -16,8 +16,7 @@ class UtilsUnitTest {
     @Test
     fun verifyLogDelegate() {
         val logger = AppLogger(ConsoleLogger())
-        var delegated: Boolean = false
-        delegated = logger.log("Verify AppLogger")
+        val delegated = logger.log("Verify AppLogger")
         assertEquals(true, delegated)
 
     }
