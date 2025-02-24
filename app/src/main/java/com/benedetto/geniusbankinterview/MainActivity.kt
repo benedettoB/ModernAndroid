@@ -80,7 +80,7 @@ fun UserItem(user: User) {
             Text(text = "USER ID: ${user.userId}")
             Text(text = "ID: ${user.id}")
             Text(text = "TITLE: ${user.title}")
-            Text(text = "COMPLETED: ${user.completed}")
+            Text(text = "BODY: ${user.body}")
 
         }
     }

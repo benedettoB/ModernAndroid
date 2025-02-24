@@ -9,6 +9,6 @@ data class UserResponse(
     val id: Int,
     @SerializedName("title")
     val title: String,
-    @SerializedName("completed")
-    val completed: Boolean
+    @SerializedName("body")
+    val body: String
 )

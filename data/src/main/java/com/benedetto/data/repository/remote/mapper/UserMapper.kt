@@ -8,6 +8,6 @@ fun UserResponse.toDomain(): User {
         userId = this.userId,
         id = this.id,
         title = this.title,
-        completed = this.completed
+        body = this.body
     )
 }
