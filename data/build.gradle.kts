@@ -38,6 +38,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttpInterceptor)
+    implementation(libs.daggerHilt)
+    implementation(libs.auth)
     implementation(libs.coroutines)
     implementation(libs.apollo)
 

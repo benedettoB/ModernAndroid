@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
     implementation(libs.daggerHilt)
+    implementation(libs.okhttpInterceptor)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.kaptHiltCompiler)
     implementation(libs.androidx.lifecycle.runtime.ktx)

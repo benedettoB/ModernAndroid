@@ -49,8 +49,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //CounterScreen()
                     //TransactionScreen()
-                    //UserScreen()
-                    LaunchList()
+                    UserScreen()
+                    //LaunchList()
 
                 }
             }
@@ -184,35 +184,3 @@ private fun CounterScreenPreview() {
         CounterScreen()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
