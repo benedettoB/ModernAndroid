@@ -25,9 +25,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.benedetto.domain.model.LaunchWrapper
 import com.benedetto.domain.model.Transaction
 import com.benedetto.domain.model.User
 import com.benedetto.geniusbankinterview.presentation.CounterViewModel
+import com.benedetto.geniusbankinterview.presentation.LaunchListViewModel
 import com.benedetto.geniusbankinterview.presentation.TransactionViewModel
 import com.benedetto.geniusbankinterview.presentation.UserViewModel
 import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
@@ -47,7 +49,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //CounterScreen()
                     //TransactionScreen()
-                    UserScreen()
+                    //UserScreen()
+                    LaunchList()
 
                 }
             }
@@ -55,13 +58,38 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+@Composable
+private fun LaunchList(viewModel: LaunchListViewModel = hiltViewModel()) {
+    val launchWrappers by viewModel.launchList.collectAsState()
+    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+        LazyColumn {
+            items(launchWrappers) { launchWrapper ->
+                LaunchItem(launchWrapper)
+            }
+        }
+    }
+}
+
+@Composable
+private fun LaunchItem(launchWrapper: LaunchWrapper) {
+
+    OutlinedCard(modifier = Modifier.padding(8.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(text = "ID: ${launchWrapper.id}")
+            Text(text = "SITE: ${launchWrapper.site}")
+        }
+    }
+}
+
+
 /*
     LazyColumn for List
     Compose-friendly ViewModel injection
 */
 
 @Composable
-fun UserScreen(viewModel: UserViewModel = hiltViewModel()) {
+private fun UserScreen(viewModel: UserViewModel = hiltViewModel()) {
     val users by viewModel.usersList.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
@@ -74,7 +102,7 @@ fun UserScreen(viewModel: UserViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun UserItem(user: User) {
+private fun UserItem(user: User) {
     OutlinedCard(modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "USER ID: ${user.userId}")
@@ -88,7 +116,7 @@ fun UserItem(user: User) {
 
 
 @Composable
-fun TransactionScreen(viewModel: TransactionViewModel = hiltViewModel()) {
+private fun TransactionScreen(viewModel: TransactionViewModel = hiltViewModel()) {
     val transactions by viewModel.transactions.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
@@ -101,7 +129,7 @@ fun TransactionScreen(viewModel: TransactionViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun TransactionItem(transaction: Transaction) {
+private fun TransactionItem(transaction: Transaction) {
     OutlinedCard(modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "ID: ${transaction.id}")
@@ -113,7 +141,7 @@ fun TransactionItem(transaction: Transaction) {
 
 
 @Composable
-fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
+private fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
     val count by viewModel.count.collectAsState()
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -136,7 +164,7 @@ fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
 
 //✅ Task: Try using Material 3 components like ElevatedButton, OutlinedCard, etc.
 @Composable
-fun MyTheme(content: @Composable () -> Unit) {
+private fun MyTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = darkColorScheme(
             primary = Color(0xFF6200EE),
@@ -151,7 +179,7 @@ fun MyTheme(content: @Composable () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun CounterScreenPreview() {
+private fun CounterScreenPreview() {
     GeniusBankInterviewTheme {
         CounterScreen()
     }

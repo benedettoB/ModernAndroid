@@ -1,6 +1,8 @@
 package com.benedetto.data.repository.remote.mapper
 
+import com.benedetto.data.LaunchListQuery
 import com.benedetto.data.repository.remote.model.UserResponse
+import com.benedetto.domain.model.LaunchWrapper
 import com.benedetto.domain.model.User
 
 fun UserResponse.toDomain(): User {
@@ -9,5 +11,12 @@ fun UserResponse.toDomain(): User {
         id = this.id,
         title = this.title,
         body = this.body
+    )
+}
+
+fun LaunchListQuery.Launch.toDomain(): LaunchWrapper {
+    return LaunchWrapper(
+        id = this.id,
+        site = this.site ?: ""
     )
 }

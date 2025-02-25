@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.apollo)
 }
 
 android {
@@ -38,8 +39,18 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.okhttpInterceptor)
     implementation(libs.coroutines)
+    implementation(libs.apollo)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+apollo {
+    service("service") {
+        packageName.set("com.benedetto.data")
+        introspection {
+            endpointUrl.set("https://apollo-fullstack-tutorial.herokuapp.com/graphql")
+            schemaFile.set(file("src/main/graphql/schema.graphqls"))
+        }
+    }
 }

@@ -1,9 +1,12 @@
 package com.benedetto.geniusbankinterview.di
 
 import com.benedetto.data.repository.local.FakeTransactionRepository
-import com.benedetto.data.repository.remote.UserRepositoryImpl
+import com.benedetto.data.repository.remote.query.GraphQLRepository
+import com.benedetto.data.repository.remote.repo.UserRepositoryImpl
+import com.benedetto.domain.repository.LaunchListRepository
 import com.benedetto.domain.repository.TransactionRepository
 import com.benedetto.domain.repository.UserRepository
+import com.benedetto.domain.usecase.GetLaunchListUseCase
 import com.benedetto.domain.usecase.GetTransactionsUseCase
 import com.benedetto.domain.usecase.GetUserUseCase
 import dagger.Module
@@ -32,6 +35,11 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideGraphQlRepository(): LaunchListRepository = GraphQLRepository()
+
+
+    @Provides
+    @Singleton
     fun provideGetTransactionsUseCase(repository: TransactionRepository): GetTransactionsUseCase {
         return GetTransactionsUseCase(repository)
     }
@@ -42,7 +50,11 @@ object AppModule {
         return GetUserUseCase(repository)
     }
 
-
+    @Provides
+    @Singleton
+    fun provideGetLaunchListUseCase(repository: LaunchListRepository): GetLaunchListUseCase {
+        return GetLaunchListUseCase(repository)
+    }
 }
 
 

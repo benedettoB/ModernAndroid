@@ -1,4 +1,4 @@
-package com.benedetto.data.repository.remote
+package com.benedetto.data.repository.remote.repo
 
 import android.util.Log
 import com.benedetto.data.repository.remote.api.UserApiService
