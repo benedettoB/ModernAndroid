@@ -19,7 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GeniusBankInterview"
+//rootProject.name = "GeniusBankInterview"
+rootProject.name = "ModernAndroid"
 include(":app")
 include(":domain")
 include(":data")
