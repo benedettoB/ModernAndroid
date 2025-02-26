@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.viewmodel
+package com.benedetto.modernandroid.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

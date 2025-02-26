@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.ui.theme
+package com.benedetto.modernandroid.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

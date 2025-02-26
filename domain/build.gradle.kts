@@ -33,10 +33,8 @@ android {
 }
 
 dependencies {
-    //implementation(libs.security)
     implementation(libs.coroutines)
     implementation(libs.daggerHilt)
-    //implementation(libs.androidx.security.crypto.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

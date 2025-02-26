@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.utils
+package com.benedetto.modernandroid.utils
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

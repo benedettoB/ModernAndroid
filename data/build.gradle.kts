@@ -37,7 +37,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
-    implementation(libs.okhttpInterceptor)
+    api(libs.okhttpInterceptor)
     implementation(libs.daggerHilt)
     implementation(libs.auth)
     implementation(libs.coroutines)

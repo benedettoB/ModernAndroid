@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview
+package com.benedetto.modernandroid
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,12 +28,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.benedetto.domain.model.LaunchWrapper
 import com.benedetto.domain.model.Transaction
 import com.benedetto.domain.model.User
-import com.benedetto.geniusbankinterview.viewmodel.CounterViewModel
-import com.benedetto.geniusbankinterview.viewmodel.LaunchListViewModel
-import com.benedetto.geniusbankinterview.viewmodel.TransactionViewModel
-import com.benedetto.geniusbankinterview.viewmodel.UserViewModel
-import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
-import com.benedetto.geniusbankinterview.ui.theme.Typography
+import com.benedetto.modernandroid.viewmodel.CounterViewModel
+import com.benedetto.modernandroid.viewmodel.LaunchListViewModel
+import com.benedetto.modernandroid.viewmodel.TransactionViewModel
+import com.benedetto.modernandroid.viewmodel.UserViewModel
+import com.benedetto.modernandroid.ui.theme.GeniusBankInterviewTheme
+import com.benedetto.modernandroid.ui.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

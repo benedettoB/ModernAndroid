@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.benedetto.geniusbankinterview"
+    namespace = "com.benedetto.modernandroid"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.benedetto.geniusbankinterview"
+        applicationId = "com.benedetto.modernandroid"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
@@ -57,7 +57,6 @@ dependencies {
     implementation(libs.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
     implementation(libs.daggerHilt)
-    implementation(libs.okhttpInterceptor)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.kaptHiltCompiler)
     implementation(libs.androidx.lifecycle.runtime.ktx)

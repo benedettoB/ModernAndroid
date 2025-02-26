@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.viewmodel
+package com.benedetto.modernandroid.viewmodel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

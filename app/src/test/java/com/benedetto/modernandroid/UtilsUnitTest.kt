@@ -1,8 +1,8 @@
-package com.benedetto.geniusbankinterview
+package com.benedetto.modernandroid
 
 
-import com.benedetto.geniusbankinterview.utils.applyOperation
-import com.benedetto.geniusbankinterview.utils.getNumbers
+import com.benedetto.modernandroid.utils.applyOperation
+import com.benedetto.modernandroid.utils.getNumbers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

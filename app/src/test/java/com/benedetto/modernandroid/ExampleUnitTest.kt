@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview
+package com.benedetto.modernandroid
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.di
+package com.benedetto.modernandroid.di
 
 import android.content.Context
 import com.benedetto.data.repository.local.FakeTransactionRepository
