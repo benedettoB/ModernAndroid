@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview
+package com.benedetto.geniusbankinterview.utils
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -17,19 +17,6 @@ fun getNumbers(): Flow<Int> = flow {
     }
 }
 
-interface Logger {
-    fun log(message: String):Boolean = false
-}
-
-class ConsoleLogger : Logger {
-    override fun log(message: String):Boolean {
-        println("Log: $message")
-        return true //return true when called to verify that log is called
-    }
-}
-
-// Delegation in action
-class AppLogger(private val logger: Logger) : Logger by logger
 
 
 

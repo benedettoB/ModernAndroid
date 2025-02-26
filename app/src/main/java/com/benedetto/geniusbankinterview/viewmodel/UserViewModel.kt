@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.presentation
+package com.benedetto.geniusbankinterview.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.benedetto.domain.model.User
 import com.benedetto.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.buffer

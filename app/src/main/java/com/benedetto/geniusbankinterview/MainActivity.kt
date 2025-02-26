@@ -28,10 +28,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.benedetto.domain.model.LaunchWrapper
 import com.benedetto.domain.model.Transaction
 import com.benedetto.domain.model.User
-import com.benedetto.geniusbankinterview.presentation.CounterViewModel
-import com.benedetto.geniusbankinterview.presentation.LaunchListViewModel
-import com.benedetto.geniusbankinterview.presentation.TransactionViewModel
-import com.benedetto.geniusbankinterview.presentation.UserViewModel
+import com.benedetto.geniusbankinterview.viewmodel.CounterViewModel
+import com.benedetto.geniusbankinterview.viewmodel.LaunchListViewModel
+import com.benedetto.geniusbankinterview.viewmodel.TransactionViewModel
+import com.benedetto.geniusbankinterview.viewmodel.UserViewModel
 import com.benedetto.geniusbankinterview.ui.theme.GeniusBankInterviewTheme
 import com.benedetto.geniusbankinterview.ui.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint

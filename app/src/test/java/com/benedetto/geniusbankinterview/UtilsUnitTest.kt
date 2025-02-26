@@ -1,6 +1,8 @@
 package com.benedetto.geniusbankinterview
 
 
+import com.benedetto.geniusbankinterview.utils.applyOperation
+import com.benedetto.geniusbankinterview.utils.getNumbers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,16 +13,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class UtilsUnitTest {
-
-    //Verify in a Unit Test that AppLogger calls ConsoleLogger.
-    @Test
-    fun verifyLogDelegate() {
-        val logger = AppLogger(ConsoleLogger())
-        val delegated = logger.log("Verify AppLogger")
-        assertEquals(true, delegated)
-
-    }
-
 
     //Write a test that collects Flow values using runTest (runBlockingTest is deprecated)
     @Test

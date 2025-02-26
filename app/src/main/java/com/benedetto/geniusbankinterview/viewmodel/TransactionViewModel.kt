@@ -1,4 +1,4 @@
-package com.benedetto.geniusbankinterview.presentation
+package com.benedetto.geniusbankinterview.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
