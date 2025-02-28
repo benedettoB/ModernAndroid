@@ -1,6 +1,7 @@
 package com.benedetto.modernandroid
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -25,15 +26,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.benedetto.domain.model.LaunchWrapper
-import com.benedetto.domain.model.Transaction
-import com.benedetto.domain.model.User
+import com.benedetto.core.model.LaunchWrapper
+import com.benedetto.core.model.Transaction
+import com.benedetto.core.model.User
+import com.benedetto.galoislibrary.GaloisLib
+import com.benedetto.modernandroid.ui.theme.ModernAndroidTheme
+import com.benedetto.modernandroid.ui.theme.Typography
 import com.benedetto.modernandroid.viewmodel.CounterViewModel
 import com.benedetto.modernandroid.viewmodel.LaunchListViewModel
 import com.benedetto.modernandroid.viewmodel.TransactionViewModel
 import com.benedetto.modernandroid.viewmodel.UserViewModel
-import com.benedetto.modernandroid.ui.theme.GeniusBankInterviewTheme
-import com.benedetto.modernandroid.ui.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +43,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            GeniusBankInterviewTheme {
+            encryptFun()
+            ModernAndroidTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -49,7 +52,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //CounterScreen()
                     //TransactionScreen()
-                    UserScreen()
+                    //UserScreen()
                     //LaunchList()
 
                 }
@@ -58,6 +61,30 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+private fun encryptFun(){
+    try{
+        val senderKeyPair = GaloisLib.generateKeyPair()
+        val receiverKeyPair = GaloisLib.generateKeyPair()
+
+        val sharedSecret = GaloisLib.computeSharedKey(senderKeyPair.publicKey, receiverKeyPair.privateKey)
+        val derivedKey = GaloisLib.deriveKey(sharedSecret)
+        val iv = GaloisLib.generateIv(12)
+
+        val originalText = "Hello Secure World!"
+        Log.d("Galois", "Original text: $originalText")
+
+        val encryptedText = GaloisLib.encrypt(iv, "Hello Secure World!", derivedKey)
+        Log.d("Galois", "Encrypted text IV: ${encryptedText.iv.joinToString { "%02x".format(it) }}")
+        Log.d("Galois", "Encrypted text CIPHER: ${encryptedText.cipherText.joinToString { "%02x".format(it) }}")
+        Log.d("Galois", "Encrypted text TAG: ${encryptedText.tag.joinToString { "%02x".format(it) }}")
+
+        val decryptedText = GaloisLib.decrypt(encryptedText.cipherText, derivedKey, encryptedText.iv, encryptedText.tag)
+        Log.d("Galois", "Decrypted text: $decryptedText")
+
+    }catch (e: RuntimeException){
+        Log.e("Galois", "Error deriving key: ${e.message}")
+    }
+}
 
 @Composable
 private fun LaunchList(viewModel: LaunchListViewModel = hiltViewModel()) {
@@ -180,7 +207,7 @@ private fun MyTheme(content: @Composable () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 private fun CounterScreenPreview() {
-    GeniusBankInterviewTheme {
+    ModernAndroidTheme {
         CounterScreen()
     }
 }

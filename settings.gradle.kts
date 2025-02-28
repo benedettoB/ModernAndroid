@@ -23,3 +23,4 @@ rootProject.name = "ModernAndroid"
 include(":app")
 include(":domain")
 include(":data")
+include(":galoislibrary")

@@ -3,8 +3,8 @@ package com.benedetto.modernandroid.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.benedetto.domain.model.LaunchWrapper
-import com.benedetto.domain.usecase.GetLaunchListUseCase
+import com.benedetto.core.model.LaunchWrapper
+import com.benedetto.core.usecase.GetLaunchListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

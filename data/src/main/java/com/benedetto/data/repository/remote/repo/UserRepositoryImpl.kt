@@ -5,8 +5,8 @@ import com.benedetto.data.repository.remote.api.UserApiService
 import com.benedetto.data.repository.remote.auth.AuthInterceptor
 import com.benedetto.data.repository.remote.mapper.toDomain
 import com.benedetto.data.repository.remote.model.UserResponse
-import com.benedetto.domain.model.User
-import com.benedetto.domain.repository.UserRepository
+import com.benedetto.core.model.User
+import com.benedetto.core.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

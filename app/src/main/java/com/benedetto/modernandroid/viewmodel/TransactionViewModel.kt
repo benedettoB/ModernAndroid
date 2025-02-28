@@ -2,8 +2,8 @@ package com.benedetto.modernandroid.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.benedetto.domain.model.Transaction
-import com.benedetto.domain.usecase.GetTransactionsUseCase
+import com.benedetto.core.model.Transaction
+import com.benedetto.core.usecase.GetTransactionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -2,8 +2,8 @@ package com.benedetto.data.repository.remote.mapper
 
 import com.benedetto.data.LaunchListQuery
 import com.benedetto.data.repository.remote.model.UserResponse
-import com.benedetto.domain.model.LaunchWrapper
-import com.benedetto.domain.model.User
+import com.benedetto.core.model.LaunchWrapper
+import com.benedetto.core.model.User
 
 fun UserResponse.toDomain(): User {
     return User(

@@ -54,6 +54,7 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":galoislibrary"))
     implementation(libs.compose.lifecycle)
     implementation(libs.androidx.core.ktx)
     implementation(libs.daggerHilt)

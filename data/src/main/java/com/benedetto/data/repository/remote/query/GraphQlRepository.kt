@@ -5,8 +5,8 @@ import com.apollographql.apollo.ApolloClient
 import com.benedetto.data.LaunchListQuery
 import com.benedetto.data.repository.remote.api.LaunchListApiService
 import com.benedetto.data.repository.remote.mapper.toDomain
-import com.benedetto.domain.model.LaunchWrapper
-import com.benedetto.domain.repository.LaunchListRepository
+import com.benedetto.core.model.LaunchWrapper
+import com.benedetto.core.repository.LaunchListRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
