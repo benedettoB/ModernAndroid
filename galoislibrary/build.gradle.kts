@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.provider.inClassPathMode
-
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)

@@ -44,7 +44,6 @@ dependencies {
     implementation(libs.apollo)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
 apollo {
