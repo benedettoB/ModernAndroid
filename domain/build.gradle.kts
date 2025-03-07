@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.library.plug)
+    alias(libs.plugins.kotlin.plug)
 }
 
 android {
@@ -33,8 +33,11 @@ android {
 }
 
 dependencies {
+    //threading
     implementation(libs.coroutines)
+    //di
     implementation(libs.daggerHilt)
+    //testing
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.espresso)
 }

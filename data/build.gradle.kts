@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.apollo)
+    alias(libs.plugins.library.plug)
+    alias(libs.plugins.kotlin.plug)
+    alias(libs.plugins.apollo.plug)
 }
 
 android {
@@ -34,17 +34,22 @@ android {
 }
 
 dependencies {
+    //library modules
     implementation(project(":domain"))
-    implementation(libs.retrofit)
+    //serialization
     implementation(libs.retrofit.gson)
-    api(libs.okhttpInterceptor)
+    //di
     implementation(libs.daggerHilt)
     implementation(libs.auth)
-    implementation(libs.coroutines)
+    //networking
+    implementation(libs.retrofit)
+    api(libs.okhttpInterceptor)
     implementation(libs.apollo)
+    //threading
+    implementation(libs.coroutines)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.espresso)
 }
 apollo {
     service("service") {

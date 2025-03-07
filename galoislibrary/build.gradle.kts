@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.library.plug)
+    alias(libs.plugins.kotlin.plug)
 }
 android {
     namespace = "com.benedetto.galoislibrary"

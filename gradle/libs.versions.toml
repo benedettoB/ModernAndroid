@@ -1,68 +1,70 @@
 [versions]
-agp = "8.3.2"
-kotlin = "1.9.0"
-coreKtx = "1.10.1"
+agpVersion = "8.3.2"
+kotlinVersion = "1.9.0"
+coreKtxVersion = "1.10.1"
 junitVersion = "5.10.2"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.7.0"
-composeBom = "2023.08.00"
-composeLifeCycle = "2.6.1"
+espressoVersion = "3.5.1"
+lifecycleRuntimeKtxVersion = "2.6.1"
+activityComposeVersion = "1.7.0"
+composeBomVersion = "2023.08.00"
+composeLifeCycleVersion = "2.6.1"
 hiltVersion = "2.50"
-androidxHilt = "1.2.0"
+androidxHiltVersion = "1.2.0"
 coroutineVersion = "1.9.0"
 retroFitVersion = "2.9.0"
 okHttpInterceptorVersion = "4.12.0"
 apolloVersion = "4.1.0"
 authVersion = "2.0.1"
 
-
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+#di
 daggerHilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 kaptHiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
-androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHilt" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retroFitVersion" }
+
+#shared mutable state/threading
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
+
+#androidx core: see https://developer.android.com/kotlin/ktx#core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+
+#serialization (such an ugly word, try to remove where possible to avoid security vulnerabilites,imagine some unknown code injecting your serliazed obejects with it's own and uses reflection libraries to pown you)
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retroFitVersion" }
+
+#networking
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retroFitVersion" }
 okhttpInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttpInterceptorVersion" }
 auth = { group = "com.auth0.android", name = "jwtdecode", version.ref = "authVersion"}
-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
-compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeLifeCycle" }
 apollo = {group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apolloVersion"}
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 
+#compose
+compose-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltVersion" }
+compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeLifeCycleVersion" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBomVersion" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityComposeVersion" }
+
+#testing
 junit = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin" }
+espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
+manifest-test = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinVersion" }
 
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-hiltPlug = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
-apollo = { id = "com.apollographql.apollo", version.ref = "apolloVersion" }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+application-plug = { id = "com.android.application", version.ref = "agpVersion" }
+kotlin-plug = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+library-plug = { id = "com.android.library", version.ref = "agpVersion" }
+hilt-plug = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+apollo-plug = { id = "com.apollographql.apollo", version.ref = "apolloVersion" }
+#Here are some lable I like to use.
+#di
+#shared mutable state/threading
+#androidx core
+#serialization
+#networking
+#compose
+#testing

@@ -1,8 +1,8 @@
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.application.plug)
+    alias(libs.plugins.kotlin.plug)
+    alias(libs.plugins.hilt.plug)
     id("kotlin-kapt")
-    alias(libs.plugins.hiltPlug)
 }
 
 android {
@@ -52,26 +52,27 @@ android {
 }
 
 dependencies {
+    //library modules
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":galoislibrary"))
-    implementation(libs.compose.lifecycle)
-    implementation(libs.androidx.core.ktx)
+    //di
     implementation(libs.daggerHilt)
-    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.kaptHiltCompiler)
+    //androidx core
+    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
+    //compose
+    implementation(libs.compose.navigation)
+    implementation(libs.compose.lifecycle)
+    implementation(libs.compose.activity)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.graphics)
+    implementation(libs.compose.preview)
+    implementation(libs.compose.material3)
+    //testing
     testImplementation(libs.junit)
-    testImplementation(libs.coroutines.test)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    androidTestImplementation(libs.espresso)
+    debugImplementation(libs.compose.tooling)
 }
