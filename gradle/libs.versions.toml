@@ -51,8 +51,6 @@ compose-activity = { group = "androidx.activity", name = "activity-compose", ver
 #testing
 junit = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitVersion" }
 espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
-manifest-test = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinVersion" }
 
 [plugins]
 application-plug = { id = "com.android.application", version.ref = "agpVersion" }
