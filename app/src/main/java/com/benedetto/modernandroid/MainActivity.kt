@@ -140,7 +140,7 @@ private fun TransactionItem(transaction: Transaction) {
 
 
 @Composable
-private fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
+public fun CounterScreen(viewModel: CounterViewModel = viewModel()) {
     val count by viewModel.count.collectAsState()
     Column(
         modifier = Modifier.fillMaxSize(),

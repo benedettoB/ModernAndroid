@@ -6,27 +6,10 @@ plugins {
 
 android {
     namespace = "com.benedetto.data"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 23
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -39,11 +22,11 @@ dependencies {
     //serialization
     implementation(libs.retrofit.gson)
     //di
-    implementation(libs.daggerHilt)
-    implementation(libs.auth)
+    implementation(libs.dagger.hilt.android)
     //networking
     implementation(libs.retrofit)
     api(libs.okhttpInterceptor)
+    implementation(libs.auth)
     implementation(libs.apollo)
     //threading
     implementation(libs.coroutines)

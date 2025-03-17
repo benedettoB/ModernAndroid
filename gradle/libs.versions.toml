@@ -1,25 +1,30 @@
 [versions]
-agpVersion = "8.3.2"
-kotlinVersion = "1.9.0"
-coreKtxVersion = "1.10.1"
-junitVersion = "5.10.2"
-espressoVersion = "3.5.1"
-lifecycleRuntimeKtxVersion = "2.6.1"
-activityComposeVersion = "1.7.0"
-composeBomVersion = "2023.08.00"
+agpVersion = "8.9.0"
+kotlinVersion = "2.0.21"
+coreKtxVersion = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoVersion = "3.6.1"
+lifecycleRuntimeKtxVersion = "2.8.7"
+activityComposeVersion = "1.10.1"
 composeLifeCycleVersion = "2.6.1"
-hiltVersion = "2.50"
+hiltVersion = "2.52"
 androidxHiltVersion = "1.2.0"
-coroutineVersion = "1.9.0"
+kspVersion = "2.0.21-1.0.28"
+coroutineVersion = "1.10.1"
 retroFitVersion = "2.9.0"
 okHttpInterceptorVersion = "4.12.0"
 apolloVersion = "4.1.0"
 authVersion = "2.0.1"
+composeMaterial3Version = "1.3.1"
+composeUiVersion = "1.7.8"
+accompanistVersion = "0.32.0"
+uiTestJunit4AndroidVersion = "1.7.8"
 
 [libraries]
 #di
-daggerHilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
-kaptHiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
 
 #shared mutable state/threading
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineVersion" }
@@ -27,6 +32,7 @@ coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version
 #androidx core: see https://developer.android.com/kotlin/ktx#core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistVersion" }
 
 #serialization (such an ugly word, try to remove where possible to avoid security vulnerabilites,imagine some unknown code injecting your serliazed obejects with it's own and uses reflection libraries to pown you)
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retroFitVersion" }
@@ -38,25 +44,31 @@ auth = { group = "com.auth0.android", name = "jwtdecode", version.ref = "authVer
 apollo = {group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apolloVersion"}
 
 #compose
-compose-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltVersion" }
+compose-runtime = {module = "androidx.compose.runtime:runtime", version.ref = "composeUiVersion"}
+compose-foundation = {module = "androidx.compose.foundation:foundation", version.ref = "composeUiVersion"}
+compose-animation = {module = "androidx.compose.animation:animation", version.ref = "composeUiVersion"}
 compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "composeLifeCycleVersion" }
-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBomVersion" }
-compose-ui = { group = "androidx.compose.ui", name = "ui" }
-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" , version.ref = "composeUiVersion"}
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterial3Version" }
+compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "composeUiVersion" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeUiVersion" }
+compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "composeUiVersion" }
 compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "activityComposeVersion" }
+compose-hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltVersion" }
 
 #testing
-junit = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junitVersion" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
+androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4AndroidVersion" }
 
 [plugins]
 application-plug = { id = "com.android.application", version.ref = "agpVersion" }
 kotlin-plug = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+compose-plug = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
 library-plug = { id = "com.android.library", version.ref = "agpVersion" }
 hilt-plug = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
+ksp-plug = {id = "com.google.devtools.ksp", version.ref = "kspVersion"}
 apollo-plug = { id = "com.apollographql.apollo", version.ref = "apolloVersion" }
 #Here are some lable I like to use.
 #di
