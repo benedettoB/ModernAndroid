@@ -1,5 +1,6 @@
 package com.benedetto.modernandroid
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -28,6 +29,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.benedetto.core.model.LaunchWrapper
 import com.benedetto.core.model.Transaction
 import com.benedetto.core.model.User
+import com.benedetto.modernandroid.ble.BluetoothScanner
+import com.benedetto.modernandroid.ble.FindBluetoothDevices
 import com.benedetto.modernandroid.ui.theme.ModernAndroidTheme
 import com.benedetto.modernandroid.ui.theme.Typography
 import com.benedetto.modernandroid.viewmodel.CounterViewModel
@@ -44,14 +47,18 @@ class MainActivity : ComponentActivity() {
             ModernAndroidTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize().padding(24.dp),
+                    color = MaterialTheme.colorScheme.background,
                 ) {
                     //CounterScreen()
                     //TransactionScreen()
                     //LaunchList()
-                    UserScreen()
-
+                    //UserScreen()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        BluetoothScanner()
+                    } else {
+                        FindBluetoothDevices()
+                    }
                 }
             }
         }
