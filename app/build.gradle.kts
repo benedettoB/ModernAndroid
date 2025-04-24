@@ -23,7 +23,6 @@ dependencies {
     //library modules
     implementation(project(":data"))
     implementation(project(":domain"))
-    implementation(project(":galoislibrary"))
     //di
     implementation(libs.dagger.hilt.android)
     implementation(libs.androidx.ui.test.junit4.android)

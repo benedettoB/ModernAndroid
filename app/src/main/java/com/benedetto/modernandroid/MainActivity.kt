@@ -53,12 +53,12 @@ class MainActivity : ComponentActivity() {
                     //CounterScreen()
                     //TransactionScreen()
                     //LaunchList()
-                    //UserScreen()
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    UserScreen()
+                   /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         BluetoothScanner()
                     } else {
                         FindBluetoothDevices()
-                    }
+                    }*/
                 }
             }
         }
