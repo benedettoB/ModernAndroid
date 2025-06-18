@@ -32,8 +32,13 @@ class UserRepositoryImpl @Inject constructor(authInterceptor: AuthInterceptor) :
             .create(UserApiService::class.java)
     }
 
-    private suspend fun fetchUsers(): List<UserResponse> {
+    override fun getUsers(): Flow<List<User>> = flow {
+        val userResponse = fetchUsers()
+        val users = userResponse.asSequence().map { it.toDomain() }.toList()
+        emit(users)
+    }.flowOn(Dispatchers.IO)
 
+    private suspend fun fetchUsers(): List<UserResponse> {
         return try {
             api.getUsers()
         } catch (exception: Exception) {
@@ -41,31 +46,4 @@ class UserRepositoryImpl @Inject constructor(authInterceptor: AuthInterceptor) :
             emptyList()
         }
     }
-
-    override fun getUsers(): Flow<List<User>> = flow {
-        val userResponse = fetchUsers()
-        val users = userResponse.asSequence().map { it.toDomain() }.toList()
-        emit(users)
-    }.flowOn(Dispatchers.IO)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
