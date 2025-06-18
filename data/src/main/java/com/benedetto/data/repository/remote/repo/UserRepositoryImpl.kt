@@ -33,8 +33,8 @@ class UserRepositoryImpl @Inject constructor(authInterceptor: AuthInterceptor) :
     }
 
     override fun getUsers(): Flow<List<User>> = flow {
-        val userResponse = fetchUsers()
-        val users = userResponse.asSequence().map { it.toDomain() }.toList()
+        val userResponse: List<UserResponse> = fetchUsers()
+        val users: List<User> = userResponse.asSequence().map { it.toDomain() }.toList()
         emit(users)
     }.flowOn(Dispatchers.IO)
 
