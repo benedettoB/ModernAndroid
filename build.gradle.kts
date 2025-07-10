@@ -2,9 +2,6 @@
 plugins {
     alias(libs.plugins.application.plug) apply false
     alias(libs.plugins.kotlin.plug) apply false
-    alias(libs.plugins.compose.plug) apply false
     alias(libs.plugins.library.plug) apply false
     alias(libs.plugins.hilt.plug) apply false
-    alias(libs.plugins.ksp.plug) apply false
-    alias(libs.plugins.apollo.plug) apply false
 }

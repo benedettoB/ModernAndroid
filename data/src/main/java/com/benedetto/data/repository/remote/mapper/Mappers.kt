@@ -1,22 +1,15 @@
 package com.benedetto.data.repository.remote.mapper
 
-import com.benedetto.data.LaunchListQuery
-import com.benedetto.data.repository.remote.model.UserResponse
-import com.benedetto.core.model.LaunchWrapper
-import com.benedetto.core.model.User
+import com.benedetto.data.repository.remote.model.ProfileResponse
+import com.benedetto.domain.model.Profile
+import com.benedetto.domain.utils.removeNewLines
 
-fun UserResponse.toDomain(): User {
-    return User(
-        userId = this.userId,
+fun ProfileResponse.toDomain(): Profile {
+    return Profile(
+        postId = this.postId,
         id = this.id,
-        title = this.title,
-        body = this.body
-    )
-}
-
-fun LaunchListQuery.Launch.toDomain(): LaunchWrapper {
-    return LaunchWrapper(
-        id = this.id,
-        site = this.site ?: ""
+        name = this.name,
+        email = this.email,
+        body = this.body.removeNewLines()
     )
 }
